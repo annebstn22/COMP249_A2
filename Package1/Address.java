@@ -7,7 +7,7 @@ public class Address {
     public Address() {
         validFrom = ""; //some default dates
         validTo = "";   //some default dates
-    }
+    } 
 
     public Address(int year, int month, int day) {
         String date = Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day);

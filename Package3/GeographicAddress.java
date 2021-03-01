@@ -1,11 +1,14 @@
+
 package Package3;
 
-public class GeographicAddress extends Address {
+import java.util.Locale;
+
+public class GeographicAddress extends Package1.Address {
     private String addressLine;
     private String city;
     private String regionOrState;
     private String zipOrPostCode;
-    private Object loc;
+    private Locale loc;
 
     public GeographicAddress() {
         super();
@@ -13,35 +16,34 @@ public class GeographicAddress extends Address {
         city = "";
         regionOrState = "";
         zipOrPostCode = "";
-        loc = new Locale();
+        Locale loc = new Locale();
     }
 
-    public GeographicAddress(int year, int month, int day, String addressLine, String city, String regionOrState, String zipOrPostCode, Object loc1) {
-        super(year, month, day);
+    public GeographicAddress(String validTo, String validFrom, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc1) {
+        super(validTo, validFrom);
         this.addressLine = addressLine;
         this.city = city;
         this.regionOrState = regionOrState;
         this.zipOrPostCode = zipOrPostCode;
-        loc = new Locale(loc1);
+        Locale loc = new Locale(loc1);
     }
 
     public GeographicAddress(GeographicAddress someGeoAddress) {
-        this(someGeoAddress.getYear(), someGeoAddress.getMonth(), someGeoAddress.getDay(), someGeoAddress.addressLine, someGeoAddress.city, someGeoAddress.regionOrState, someGeoAddress.zipOrPostCode, someGeoAddress.loc);
+        this(someGeoAddress.validTo, someGeoAddress.validFrom, someGeoAddress.addressLine, someGeoAddress.city, someGeoAddress.regionOrState, someGeoAddress.zipOrPostCode, someGeoAddress.loc);
     }
 
-    private int getYear() {
-        return (super.year);
-    }    
-    
-    private int getMonth() {
-        return (super.year);
-    }
-
-    private int getDay() {
-        return (super.year);
-    }
-
-    public String toString() {
+    public String toString() {  //fix to correct formatting later
         return (addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc);
+    }
+    
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
+            return false;
+        else if (getClass()!= otherObject.getClass())
+            return false;
+        else {
+            GeographicAddress otherGeographicAddress = (GeographicAddress)otherObject;
+            return (validTo.equals(otherGeographicAddress.validTo) && validFrom.equals(otherGeographicAddress.validFrom) && addressLine.equals(otherGeographicAddress.addressLine) && city.equals(otherGeographicAddress.city) && city.equals(otherGeographicAddress.city) && zipOrPostCode.equals(otherGeographicAddress.zipOrPostCode) && loc.equals(otherGeographicAddress.loc));
+        }
     }
 }

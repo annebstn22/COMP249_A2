@@ -1,11 +1,13 @@
 package Package3;
 
-public class PostOfficeBoxAddress extends Address{
+import java.util.Locale;
+
+public class PostOfficeBoxAddress extends Package1.Address{
     private String addressLine;
     private String city;
     private String regionOrState;
     private String zipOrPostCode;
-    private Locale loc = new Locale();
+    private Locale loc;
     private int boxLobbyDoorCode;
 
     public PostOfficeBoxAddress() {
@@ -14,28 +16,34 @@ public class PostOfficeBoxAddress extends Address{
         city = "";
         regionOrState = "";
         zipOrPostCode = "";
-        //add loc
+        loc = new Locale();
     }
     
-    public PostOfficeBoxAddress(int year, int month, int day, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc) {
-        super(year, month, day);
+    public PostOfficeBoxAddress(String validTo, String validFrom, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc1) {
+        super(validTo, validFrom);
         this.addressLine = addressLine;
         this.city = city;
         this.regionOrState = regionOrState;
         this.zipOrPostCode = zipOrPostCode;
-        //add loc
+        loc = new Locale(loc1);
     }
 
     public PostOfficeBoxAddress(PostOfficeBoxAddress someBox) {
-        // change to this(param1, param2, ...) format
-        this.addressLine = someBox.addressLine;
-        this.city = someBox.city;
-        this.regionOrState = someBox.regionOrState;
-        this.zipOrPostCode = someBox.zipOrPostCode;
-        this.loc = Locale(someBox.loc);     //fix, doesn't make sense. Both variables cannot have the same name
+        this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc);
     }
 
     public String toString() {
         return ("This P.O. Box address is " + addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc + ".\nBox pin is " + boxLobbyDoorCode);
+    }
+
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
+            return false;
+        else if (getClass()!= otherObject.getClass())
+            return false;
+        else {
+            PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherObject;
+            return (validTo.equals(otherPostOfficeBoxAddress.validTo) && validFrom.equals(otherPostOfficeBoxAddress.validFrom) && addressLine.equals(otherPostOfficeBoxAddress.addressLine) && city.equals(otherPostOfficeBoxAddress.city) && city.equals(otherPostOfficeBoxAddress.city) && zipOrPostCode.equals(otherPostOfficeBoxAddress.zipOrPostCode) && loc.equals(otherPostOfficeBoxAddress.loc) && boxLobbyDoorCode == otherPostOfficeBoxAddress.boxLobbyDoorCode);
+        }
     }
 }

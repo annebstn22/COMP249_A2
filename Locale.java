@@ -16,12 +16,21 @@ public class Locale {
     }
 
     public Locale(Locale some_locale) {
-        this.alphaCountryCode = some_locale.alphaCountryCode;
-        this.numCountryCode = some_locale.numCountryCode;
-        this.countryName = some_locale.countryName;
+        this(some_locale.alphaCountryCode, some_locale.numCountryCode, some_locale.countryName);
     }
 
     public String toString() {
         return (alphaCountryCode + " " + numCountryCode + " " + countryName);
+    }
+
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
+            return false;
+        else if (getClass() != otherObject.getClass())
+            return false;
+        else {
+            Locale otherLocale = (Locale) otherObject;
+            return (alphaCountryCode.equals(otherLocale.alphaCountryCode) && numCountryCode == otherLocale.numCountryCode && countryName.equals(otherLocale.countryName));
+        }
     }
 }

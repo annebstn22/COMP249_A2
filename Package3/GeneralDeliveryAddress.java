@@ -1,10 +1,14 @@
 package Package3;
 
-public class GeneralDeliveryAddress extends Package2.TelecomAddress {
+import Package2.TelecomAddress;
+import Package1.Address;
+
+public class GeneralDeliveryAddress extends Package2.TelecomAddress { // I don't believe a generalDeliveryAddress is a TelecomAddress. We could add an attribute instead that is of type telecomAddress
     private String addressLine;
     private String city;
     private String regionOrState;
     private String zipOrPostCode;
+    private TelecomAddress telecomAddress; // 
 
     public GeneralDeliveryAddress() {
         super();
@@ -16,6 +20,7 @@ public class GeneralDeliveryAddress extends Package2.TelecomAddress {
 
     public GeneralDeliveryAddress(String validTo, String validFrom, int countryCode, String nationalDialingPrefix, int areaCode, long number, int extension, String physicalType, String addressLine, String city, String regionOrState, String zipOrPostCode) {
         super(validTo, validFrom, countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType);
+        //this.telecomAddress = new TelecomAddress(validTo, validFrom, countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType);
         this.addressLine = addressLine;
         this.city = city;
         this.regionOrState = regionOrState;
@@ -27,14 +32,20 @@ public class GeneralDeliveryAddress extends Package2.TelecomAddress {
     }
 
     public String toString() {  //finish later
-        return ();
+        return "This general delivery address " + addressLine + ", " + city + ", " 
+        + regionOrState + ", " + zipOrPostCode + ", " + telecomAddress + " is valid from " 
+        + validFrom + " to " + validTo + " and therefore ";
     }
 
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;
-        else if (getClass()!= otherObject.getClass())
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
+
         else {
             GeneralDeliveryAddress otherGeneralDeliveryAddress = (GeneralDeliveryAddress)otherObject;
             return (validTo.equals(otherGeneralDeliveryAddress.validTo) && validFrom.equals(otherGeneralDeliveryAddress.validFrom) && countryCode == otherGeneralDeliveryAddress.countryCode && nationalDialingPrefix.equals(otherGeneralDeliveryAddress.nationalDialingPrefix) && areaCode == otherGeneralDeliveryAddress.areaCode && number == otherGeneralDeliveryAddress.number && extension == otherGeneralDeliveryAddress.extension && physicalType == otherGeneralDeliveryAddress.physicalType && addressLine.equals(otherGeneralDeliveryAddress.addressLine) && city.equals(otherGeneralDeliveryAddress.city) && regionOrState.equals(otherGeneralDeliveryAddress.regionOrState) && zipOrPostCode.equals(otherGeneralDeliveryAddress.zipOrPostCode));

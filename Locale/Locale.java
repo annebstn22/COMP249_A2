@@ -1,18 +1,19 @@
+package Locale;
 public class Locale {
-    public String alphaCountryCode;
+    public String alphaCountryCode; // why are they public?
     public int numCountryCode;
     public String countryName;
 
     public Locale() {
         alphaCountryCode = "";
-        numCountryCode = 0;
+        numCountryCode = 000;
         countryName = "";
     }
 
     public Locale(String alphaCountryCode, int numCountryCode, String countryName) {
-        this.alphaCountryCode = alphaCountryCode;
-        this.numCountryCode = numCountryCode;
-        this.countryName = countryName;
+        this.alphaCountryCode = alphaCountryCode; // check that only 2 letters
+        this.numCountryCode = numCountryCode; // check that is 3 integers
+        this.countryName = countryName; 
     }
 
     public Locale(Locale some_locale) {
@@ -26,7 +27,7 @@ public class Locale {
     public boolean equals(Object otherObject) {
         if (otherObject == null)
             return false;
-        else if (getClass() != otherObject.getClass())
+        else if (getClass() != otherObject.getClass()) //check with substring
             return false;
         else {
             Locale otherLocale = (Locale) otherObject;

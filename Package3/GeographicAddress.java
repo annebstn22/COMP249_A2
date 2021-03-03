@@ -1,7 +1,8 @@
 
 package Package3;
 
-import java.util.Locale;
+import Locale.Locale;
+import Package1.Address;
 
 public class GeographicAddress extends Package1.Address {
     private String addressLine;
@@ -16,7 +17,7 @@ public class GeographicAddress extends Package1.Address {
         city = "";
         regionOrState = "";
         zipOrPostCode = "";
-        Locale loc = new Locale();
+        loc = new Locale();
     }
 
     public GeographicAddress(String validTo, String validFrom, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc1) {
@@ -25,7 +26,7 @@ public class GeographicAddress extends Package1.Address {
         this.city = city;
         this.regionOrState = regionOrState;
         this.zipOrPostCode = zipOrPostCode;
-        Locale loc = new Locale(loc1);
+        loc = new Locale(loc1);
     }
 
     public GeographicAddress(GeographicAddress someGeoAddress) {
@@ -36,10 +37,13 @@ public class GeographicAddress extends Package1.Address {
         return (addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc);
     }
     
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) {
         if (otherObject == null)
-            return false;
-        else if (getClass()!= otherObject.getClass())
+        return false;
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
             GeographicAddress otherGeographicAddress = (GeographicAddress)otherObject;

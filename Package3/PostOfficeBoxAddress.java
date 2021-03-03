@@ -1,6 +1,7 @@
 package Package3;
 
-import java.util.Locale;
+import Locale.Locale;
+import Package1.Address;
 
 public class PostOfficeBoxAddress extends Package1.Address{
     private String addressLine;
@@ -36,10 +37,13 @@ public class PostOfficeBoxAddress extends Package1.Address{
         return ("This P.O. Box address is " + addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc + ".\nBox pin is " + boxLobbyDoorCode);
     }
 
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;
-        else if (getClass()!= otherObject.getClass())
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
             PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherObject;

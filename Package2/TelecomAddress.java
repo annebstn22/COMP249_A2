@@ -1,16 +1,17 @@
 
 package Package2;
+import Package1.Address;
 
 public class TelecomAddress extends Package1.Address {
     protected int countryCode;
-    protected String nationalDialingPrefix;
+    protected String nationalDialingPrefix; // would we maybe like it as a integer and but the parentheses in the toString();
     protected int areaCode;
     protected long number;
     protected int extension;
     protected String physicalType;
 
     public TelecomAddress() {
-        super();
+        super(); // don't believe is necessary
         countryCode = 0;
         nationalDialingPrefix = "";
         areaCode = 0;
@@ -37,10 +38,14 @@ public class TelecomAddress extends Package1.Address {
         return ("+" + countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType);
     }
 
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) {
+
         if (otherObject == null)
             return false;
-        else if (getClass()!= otherObject.getClass())
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
             TelecomAddress otherTelecomAddress = (TelecomAddress)otherObject;

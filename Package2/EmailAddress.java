@@ -1,4 +1,5 @@
 package Package2;
+import Package1.Address;
 
 public class EmailAddress extends Package1.Address {
     private String userName;
@@ -6,7 +7,7 @@ public class EmailAddress extends Package1.Address {
     private String tld;
 
     public EmailAddress() {
-        super();
+        super(); //isn't this done automatically? for default constructor of super
         userName = "";
         domainName = "";
         tld = "";
@@ -27,10 +28,13 @@ public class EmailAddress extends Package1.Address {
         return (userName + "@" + domainName + "." + tld);
     }
 
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) { 
+        
         if (otherObject == null)
             return false;
-        else if (getClass()!= otherObject.getClass())
+        
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+        if (!thisClass.substring(6).equals(otherClass.substring(6)))
             return false;
         else {
             EmailAddress otherEmailAddress = (EmailAddress)otherObject;

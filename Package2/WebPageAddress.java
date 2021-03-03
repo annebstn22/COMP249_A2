@@ -1,9 +1,16 @@
 
 package Package2;
+import Package1.Address;
 
 public class WebPageAddress extends Package1.Address{
     private String domainName;
     private String resourceName;
+
+    public WebPageAddress(){
+        super();
+        domainName = "domain-name";
+        resourceName = "";
+    }
 
     public WebPageAddress(String domainName, String resourceName){
         super();
@@ -21,19 +28,23 @@ public class WebPageAddress extends Package1.Address{
         return ("");
     }
 
-    public boolean equals(Object otherObject) {
+    public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;
-        else if (getClass()!= otherObject.getClass())
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
+
         else {
             WebPageAddress otherWebPageAddress = (WebPageAddress)otherObject;
             return (validTo.equals(otherWebPageAddress.validTo) && validFrom.equals(otherWebPageAddress.validFrom) && domainName.equals(otherWebPageAddress.domainName) && resourceName.equals(otherWebPageAddress.resourceName));
         }
     }
 
-    //accessor methods
-    private String getDomainName(){
+    //accessor methods // shouldn't these all be public?
+   /*private String getDomainName(){
         return domainName;
     }
 
@@ -64,5 +75,5 @@ public class WebPageAddress extends Package1.Address{
 
     private void setValidFrom(String validFrom) {
         this.validFrom = validFrom;
-    }
+    }*/
 }

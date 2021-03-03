@@ -27,7 +27,10 @@ public class Locale {
     public boolean equals(Object otherObject) {
         if (otherObject == null)
             return false;
-        else if (getClass() != otherObject.getClass()) //check with substring
+
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+
+        if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
             Locale otherLocale = (Locale) otherObject;

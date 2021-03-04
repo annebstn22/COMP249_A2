@@ -2,7 +2,7 @@
 package Package2;
 import Package1.Address;
 
-public class TelecomAddress extends Package1.Address {
+public class TelecomAddress extends Address {
     protected int countryCode;
     protected String nationalDialingPrefix; // would we maybe like it as a integer and but the parentheses in the toString();
     protected int areaCode;

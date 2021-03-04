@@ -4,7 +4,7 @@ package Package3;
 import Locale.Locale;
 import Package1.Address;
 
-public class GeographicAddress extends Package1.Address {
+public class GeographicAddress extends Address {
     private String addressLine;
     private String city;
     private String regionOrState;

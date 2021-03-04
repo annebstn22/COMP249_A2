@@ -3,7 +3,7 @@ package Package3;
 import Locale.Locale;
 import Package1.Address;
 
-public class PostOfficeBoxAddress extends Package1.Address{
+public class PostOfficeBoxAddress extends Address{
     private String addressLine;
     private String city;
     private String regionOrState;

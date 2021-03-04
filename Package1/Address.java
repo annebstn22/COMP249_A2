@@ -29,7 +29,7 @@ public class Address {
         return obsolete;
     }
 
-    //don't understand how we are able to know the date of "today" - ask user at start?
+    //don't understand how we are able to know the date of "today" - ask user at start? 
     public String toString() {
         return ("This address is valid from " + validFrom + " to " + validTo + " and is therefore " + (validDate ? "still usable today." : "no longer usable."));   //somehow incorporate the traceObsoleteAddress into each address class to make validDate variable usable 
     } 

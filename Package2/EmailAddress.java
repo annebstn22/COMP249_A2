@@ -1,7 +1,7 @@
 package Package2;
 import Package1.Address;
 
-public class EmailAddress extends Package1.Address {
+public class EmailAddress extends Address {
     private String userName;
     private String domainName;
     private String tld;

@@ -3,7 +3,7 @@ package Package3;
 import Package2.TelecomAddress;
 import Package1.Address;
 
-public class GeneralDeliveryAddress extends Package2.TelecomAddress { // I don't believe a generalDeliveryAddress is a TelecomAddress. We could add an attribute instead that is of type telecomAddress
+public class GeneralDeliveryAddress extends TelecomAddress { // I don't believe a generalDeliveryAddress is a TelecomAddress. We could add an attribute instead that is of type telecomAddress
     private String addressLine;
     private String city;
     private String regionOrState;

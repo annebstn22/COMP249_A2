@@ -2,7 +2,7 @@
 package Package2;
 import Package1.Address;
 
-public class WebPageAddress extends Package1.Address{
+public class WebPageAddress extends Address{
     private String domainName;
     private String resourceName;
 

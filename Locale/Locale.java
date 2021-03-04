@@ -1,8 +1,8 @@
 package Locale;
 public class Locale {
-    public String alphaCountryCode; // why are they public?
-    public int numCountryCode;
-    public String countryName;
+    protected String alphaCountryCode;      //protected or private???
+    protected int numCountryCode;
+    protected String countryName;
 
     public Locale() {
         alphaCountryCode = "";

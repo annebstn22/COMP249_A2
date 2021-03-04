@@ -3,10 +3,18 @@ import Package2.*;
 import Package3.*;
 
 public class driver {
+    public static void copyAddresses(Address[] arr) {
+        Address[] arr_copy = new Address[arr.length];
+        for (int i=0; i<arr.length; i++) {
+            arr_copy[i] = new Address(arr[i]);  
+            System.out.println(arr_copy[i]);    
+        }
+    }
+
 	public static void main(String[] args) {
         Address a1 = new Address();
-        //Address a2 = new Address(2015, 05, 01);
-        Address a3 = new Address();
+        // Address a2 = new Address(2015, 05, 01);
+        Address a3 = new Address(a1);
         EmailAddress em1 = new EmailAddress("2022-12-20", "2021-11-30", "kingscross", "warnerbros", "com");
         //TelecomAddress tel1 = new TelecomAddress("2001-09-24", "1999-01-20", countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType)
         //GeneralDeliveryAddress genD1 = new GeneralDeliveryAddress(validTo, validFrom, countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType, addressLine, city, regionOrState, zipOrPostCode)
@@ -16,6 +24,7 @@ public class driver {
 
 
         traceObsoleteAddress(arr, 2004, 03, 21);
+        copyAddresses(arr);
     }
 
     public static void traceObsoleteAddress(Address[] arr, int year, int month, int day) {

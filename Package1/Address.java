@@ -3,82 +3,93 @@ package Package1;
 public class Address {
     protected String validFrom;
     protected String validTo;
-    protected boolean validDate;
 
+    //Default Constructor
     public Address() {
         validFrom = "0000-00-00"; 
         validTo = "0000-00-00"; 
-    }
-
-    public Address(String validTo, String validFrom) {
-        this.validTo = validTo;
-        this.validFrom = validFrom;
-        // Should check that inputted address is valid i.e month = 13 not valid
-        // Check that ValidTo is greater than or equal to validFrom
-    }
-
-    public Address(Address someAddress) {
-        this(someAddress.validTo, someAddress.validFrom);
-    }
-
-    
-    /** 
-     * @param year
-     * @param month
-     * @param toString(
-     * @return boolean obsolete
-     */
-    public Boolean traceObsoleteAddress(int year, int month, int day) { // shouldn't this method be only in the driver?
-        String date = Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day);
-
-        boolean obsolete = (validFrom.compareTo(date)<=0 && validTo.compareTo(date)>=0)? false:true; // wouldn't it be or || and is this the correct way to compare?
         
-        return obsolete;
     }
 
-    
+    //Parameterized Constructor
+    public Address(String validFrom, String validTo) {
+
+        // Assign earliest date to validFrom and furthese date to validTo
+
+        if (checkValidDateOrder(validFrom, validTo)){
+            this.validFrom = validFrom;
+            this.validTo = validTo; 
+        } else {
+            this.validFrom = validTo;
+            this.validTo = validFrom; 
+        }
+        
+        
+    }
+
+    //Copy Constructor
+    public Address(Address someAddress) {
+        this(someAddress.validFrom, someAddress.validTo);
+    }
+
     /** 
      * @return String
      */
-    //don't understand how we are able to know the date of "today" - ask user at start? 
     public String toString() {
-        return ("This address is valid from " + validFrom + " to " + validTo + " and is therefore " + (validDate ? "still usable today." : "no longer usable."));   //somehow incorporate the traceObsoleteAddress into each address class to make validDate variable usable 
+        return ("This address is valid from " + validFrom + " to " + validTo);
     } 
-
     
     /** 
-     * @param otherObject
+     * @param otherAddress
      * @return boolean
      */
-    public boolean equals(Address otherObject) {
-        
-        if (otherObject == null)
-            return false;
+    public boolean equals(Address otherAddress) {
 
-        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString();
+        if (otherAddress == null){
+            return false;
+        }
+
+        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString();
         
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
-            Address otherAddress = (Address) otherObject;
+            // Address otherAddress = (Address) otherObject; // Not necessary I believe? since can't have EmailAddress = new Address()
             return (validTo.equals(otherAddress.validTo) && validFrom.equals(otherAddress.validFrom));
         }
     }
 
-    
+    //Accessors and Mutators
+
     /** 
      * @return String validFrom
      */
-    //Accessors
+
     public String getValidFrom(){
         return validFrom;
     }
 
+    public void setValidFrom(String validFrom){
+        this.validFrom = validFrom;
+    }
     
     /** 
      * @return String validTo
      */
     public String getValidTo(){
         return validTo;
+    }
+
+    public void setValidTo(String validTo){
+        this.validTo = validTo;
+    }
+
+    //Check if validFrom <= ValidTo
+    public boolean checkValidDateOrder(String validFrom, String validTo){
+        if (validFrom.compareTo(validTo)<=0){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

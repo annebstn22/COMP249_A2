@@ -8,7 +8,7 @@ public class GeneralDeliveryAddress extends TelecomAddress { // I don't believe 
     private String city;
     private String regionOrState;
     private String zipOrPostCode;
-    private TelecomAddress telecomAddress; // 
+    private TelecomAddress telecomAddress; 
 
     public GeneralDeliveryAddress() {
         // super();

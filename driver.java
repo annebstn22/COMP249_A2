@@ -61,7 +61,7 @@ public class driver {
         } */
 
         boolean obsolete = true;
-        for (int i=0; i<arr.length; i++){
+        for (int i=0; i<arr.length; i++){   //add index
             obsolete = (arr[i].getValidFrom().compareTo(date)<=0 && arr[i].getValidTo().compareTo(date)>=0)? false:true;
             System.out.println(obsolete? arr[i] + " is obsolete.": arr[i] + " is valid.");
         }

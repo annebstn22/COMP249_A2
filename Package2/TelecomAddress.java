@@ -4,14 +4,14 @@ import Package1.Address;
 
 public class TelecomAddress extends Address {
     protected int countryCode;
-    protected String nationalDialingPrefix; // would we maybe like it as a integer and but the parentheses in the toString();   ***instructions say to leave it as a String type
+    protected String nationalDialingPrefix;
     protected int areaCode;
     protected long number;
     protected int extension;
     protected String physicalType;
 
     public TelecomAddress() {
-        // super(); // don't believe is necessary  ***You're absolutely right! My bad...
+        // super();
         countryCode = 0;
         nationalDialingPrefix = "";
         areaCode = 0;

@@ -20,10 +20,19 @@ public class Locale {
         this(some_locale.alphaCountryCode, some_locale.numCountryCode, some_locale.countryName);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String toString() {
         return (alphaCountryCode + " " + numCountryCode + " " + countryName);
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Object otherObject) {
         if (otherObject == null)
             return false;

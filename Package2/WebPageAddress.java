@@ -7,7 +7,7 @@ public class WebPageAddress extends Address{
     private String resourceName;
 
     public WebPageAddress(){
-        super();
+        // super();
         domainName = "domain-name";
         resourceName = "";
     }
@@ -24,10 +24,20 @@ public class WebPageAddress extends Address{
         this.resourceName = resourceName;
     }  
     
-    public String toString() {  //finish later
-        return ("");
+    
+    /** 
+     * @param otherObject
+     * @return String
+     */
+    public String toString() {
+        return ("This web page address www." + domainName + "/" + resourceName + " is valid from " + validFrom + " to " + validTo + ".");
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;
@@ -43,7 +53,7 @@ public class WebPageAddress extends Address{
         }
     }
 
-    //accessor methods // shouldn't these all be public?
+    //accessor methods // shouldn't these all be public?   ***Depends on where they are needed, if its used as an internal method then private is fine, otherwise we should change them to public.
    /*private String getDomainName(){
         return domainName;
     }

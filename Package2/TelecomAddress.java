@@ -11,7 +11,7 @@ public class TelecomAddress extends Address {
     protected String physicalType;
 
     public TelecomAddress() {
-        super(); // don't believe is necessary
+        // super(); // don't believe is necessary  ***You're absolutely right! My bad...
         countryCode = 0;
         nationalDialingPrefix = "";
         areaCode = 0;
@@ -34,10 +34,20 @@ public class TelecomAddress extends Address {
         this(an_address.validTo, an_address.validFrom, an_address.countryCode, an_address.nationalDialingPrefix, an_address.areaCode, an_address.number, an_address.extension, an_address.physicalType);
     }
 
-    public String toString(){   //fix to correct formatting later
-        return ("+" + countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType);
+    
+    /** 
+     * @param otherObject
+     * @return String
+     */
+    public String toString(){ 
+        return ("This telecom address +" + countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType + " is valid from " + validFrom + " to " + validTo + ".");
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
 
         if (otherObject == null)

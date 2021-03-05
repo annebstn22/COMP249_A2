@@ -6,8 +6,8 @@ public class Address {
     protected boolean validDate;
 
     public Address() {
-        validFrom = "0000-00-00"; // some default dates
-        validTo = "0000-00-00"; // some default dates
+        validFrom = "0000-00-00"; 
+        validTo = "0000-00-00"; 
     }
 
     public Address(String validTo, String validFrom) {
@@ -21,6 +21,13 @@ public class Address {
         this(someAddress.validTo, someAddress.validFrom);
     }
 
+    
+    /** 
+     * @param year
+     * @param month
+     * @param toString(
+     * @return boolean obsolete
+     */
     public Boolean traceObsoleteAddress(int year, int month, int day) { // shouldn't this method be only in the driver?
         String date = Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day);
 
@@ -29,11 +36,20 @@ public class Address {
         return obsolete;
     }
 
+    
+    /** 
+     * @return String
+     */
     //don't understand how we are able to know the date of "today" - ask user at start? 
     public String toString() {
         return ("This address is valid from " + validFrom + " to " + validTo + " and is therefore " + (validDate ? "still usable today." : "no longer usable."));   //somehow incorporate the traceObsoleteAddress into each address class to make validDate variable usable 
     } 
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
         
         if (otherObject == null)
@@ -49,12 +65,19 @@ public class Address {
         }
     }
 
+    
+    /** 
+     * @return String validFrom
+     */
     //Accessors
-
     public String getValidFrom(){
         return validFrom;
     }
 
+    
+    /** 
+     * @return String validTo
+     */
     public String getValidTo(){
         return validTo;
     }

@@ -7,7 +7,7 @@ public class EmailAddress extends Address {
     private String tld;
 
     public EmailAddress() {
-        super(); //isn't this done automatically? for default constructor of super
+        // super(); //isn't this done automatically? for default constructor of super
         userName = "";
         domainName = "";
         tld = "";
@@ -24,10 +24,20 @@ public class EmailAddress extends Address {
         this(someEmail.validTo, someEmail.validFrom, someEmail.userName, someEmail.domainName, someEmail.tld);
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return String
+     */
     public String toString() {  //fix to correct formatting later
         return (userName + "@" + domainName + "." + tld);
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) { 
         
         if (otherObject == null)

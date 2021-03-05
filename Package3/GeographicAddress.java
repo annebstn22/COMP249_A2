@@ -12,7 +12,7 @@ public class GeographicAddress extends Address {
     private Locale loc;
 
     public GeographicAddress() {
-        super();
+        // super();
         addressLine = "";
         city = "";
         regionOrState = "";
@@ -33,10 +33,19 @@ public class GeographicAddress extends Address {
         this(someGeoAddress.validTo, someGeoAddress.validFrom, someGeoAddress.addressLine, someGeoAddress.city, someGeoAddress.regionOrState, someGeoAddress.zipOrPostCode, someGeoAddress.loc);
     }
 
+    
+    /**
+     * @return String
+     */
     public String toString() {  //fix to correct formatting later
         return (addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc);
     }
     
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
         if (otherObject == null)
         return false;

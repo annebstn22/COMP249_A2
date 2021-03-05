@@ -11,7 +11,7 @@ public class GeneralDeliveryAddress extends TelecomAddress { // I don't believe 
     private TelecomAddress telecomAddress; // 
 
     public GeneralDeliveryAddress() {
-        super();
+        // super();
         addressLine = "";
         city = "";
         regionOrState = "";
@@ -31,12 +31,20 @@ public class GeneralDeliveryAddress extends TelecomAddress { // I don't believe 
         this(an_address.validTo, an_address.validFrom,an_address.countryCode, an_address.nationalDialingPrefix, an_address.areaCode, an_address.number, an_address.extension, an_address.physicalType, an_address.addressLine, an_address.city, an_address.regionOrState, an_address.zipOrPostCode);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String toString() {  //finish later
         return "This general delivery address " + addressLine + ", " + city + ", " 
         + regionOrState + ", " + zipOrPostCode + ", " + telecomAddress + " is valid from " 
         + validFrom + " to " + validTo + " and therefore ";
     }
-
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;

@@ -12,7 +12,7 @@ public class PostOfficeBoxAddress extends Address{
     private int boxLobbyDoorCode;
 
     public PostOfficeBoxAddress() {
-        super();
+        // super();
         addressLine = "";
         city = "";
         regionOrState = "";
@@ -33,10 +33,19 @@ public class PostOfficeBoxAddress extends Address{
         this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String toString() {
         return ("This P.O. Box address is " + addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc + ".\nBox pin is " + boxLobbyDoorCode);
     }
 
+    
+    /** 
+     * @param otherObject
+     * @return boolean
+     */
     public boolean equals(Address otherObject) {
         if (otherObject == null)
             return false;

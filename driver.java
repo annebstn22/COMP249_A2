@@ -3,6 +3,10 @@ import Package2.*;
 import Package3.*;
 
 public class driver {
+    
+    /** 
+     * @param arr
+     */
     public static void copyAddresses(Address[] arr) {
         Address[] arr_copy = new Address[arr.length];
         for (int i=0; i<arr.length; i++) {
@@ -11,7 +15,11 @@ public class driver {
         }
     }
 
-	public static void main(String[] args) {
+	
+    /** 
+     * @param args
+     */
+    public static void main(String[] args) {
         Address a1 = new Address();
         // Address a2 = new Address(2015, 05, 01);
         Address a3 = new Address(a1);
@@ -27,6 +35,13 @@ public class driver {
         copyAddresses(arr);
     }
 
+    
+    /** 
+     * @param arr
+     * @param year
+     * @param month
+     * @param day
+     */
     public static void traceObsoleteAddress(Address[] arr, int year, int month, int day) {
         String date = Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day);
         

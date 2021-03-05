@@ -3,60 +3,116 @@ package Package3;
 import Package2.TelecomAddress;
 import Package1.Address;
 
-public class GeneralDeliveryAddress extends TelecomAddress { // I don't believe a generalDeliveryAddress is a TelecomAddress. We could add an attribute instead that is of type telecomAddress
+public class GeneralDeliveryAddress extends Address{ 
     private String addressLine;
     private String city;
     private String regionOrState;
     private String zipOrPostCode;
     private TelecomAddress telecomAddress; 
 
+    //Default Constructor
     public GeneralDeliveryAddress() {
-        // super();
-        addressLine = "";
-        city = "";
-        regionOrState = "";
-        zipOrPostCode = "";
+        addressLine = "address";
+        city = "city";
+        regionOrState = "region/state";
+        zipOrPostCode = "zip/postcode";
+        telecomAddress = new TelecomAddress();
     }
 
-    public GeneralDeliveryAddress(String validTo, String validFrom, int countryCode, String nationalDialingPrefix, int areaCode, long number, int extension, String physicalType, String addressLine, String city, String regionOrState, String zipOrPostCode) {
-        super(validTo, validFrom, countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType);
-        //this.telecomAddress = new TelecomAddress(validTo, validFrom, countryCode, nationalDialingPrefix, areaCode, number, extension, physicalType);
+    // Parameterized Constructor
+    public GeneralDeliveryAddress(String validFrom, String validTo, String addressLine, String city, String regionOrState, String zipOrPostCode, TelecomAddress telecomAddress) {
+        super(validFrom, validTo);
+        this.telecomAddress = new TelecomAddress(telecomAddress);
         this.addressLine = addressLine;
         this.city = city;
         this.regionOrState = regionOrState;
         this.zipOrPostCode = zipOrPostCode;
     }
 
-    public GeneralDeliveryAddress(GeneralDeliveryAddress an_address) {
-        this(an_address.validTo, an_address.validFrom,an_address.countryCode, an_address.nationalDialingPrefix, an_address.areaCode, an_address.number, an_address.extension, an_address.physicalType, an_address.addressLine, an_address.city, an_address.regionOrState, an_address.zipOrPostCode);
+    //Copy Constructor
+    public GeneralDeliveryAddress(GeneralDeliveryAddress anAddress) {
+        this.validFrom = anAddress.validFrom;
+        this.validTo = anAddress.validTo;
+        this.addressLine = anAddress.addressLine;
+        this.city = anAddress.city;
+        this.regionOrState = anAddress.regionOrState;
+        this.zipOrPostCode = anAddress.zipOrPostCode;
+        this.telecomAddress = new TelecomAddress(anAddress.telecomAddress);
     }
 
-    
+    //Accessors and Mutators
+
+    public String getAddressLine(){
+        return addressLine;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public String getRegionOrState(){
+        return regionOrState;
+    }
+
+    public String getZipOrPostCode(){
+        return zipOrPostCode;
+    }
+
+    public TelecomAddress getTelecomAddress(){
+        return new TelecomAddress(this.telecomAddress);
+    }
+
+    public void setAddressLine(String addressLine){
+        this.addressLine = addressLine;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public void setRegionOrState(String regionOrState){
+        this.regionOrState = regionOrState;
+    }
+
+    public void setZipOrPostCode(String zipOrPostCode){
+        this.zipOrPostCode = zipOrPostCode;
+    }
+
+    public void setTelecomAddress(TelecomAddress telecomAddress){
+        TelecomAddress copyOfTelecomAddress = new TelecomAddress(telecomAddress);
+        this.telecomAddress = copyOfTelecomAddress;
+    }
+
     /** 
      * @return String
      */
     public String toString() {  //finish later
-        return "This general delivery address " + addressLine + ", " + city + ", " 
-        + regionOrState + ", " + zipOrPostCode + ", " + telecomAddress + " is valid from " 
-        + validFrom + " to " + validTo + " and therefore ";
+        return "The GENERAL DELIVERY ADDRESS:\n" + addressLine + ", " + city + ", " 
+        + regionOrState + ", " + zipOrPostCode + ", " + telecomAddress.display() + " is valid from " 
+        + validFrom + " to " + validTo;
     }
     
     /** 
-     * @param otherObject
+     * @param otherAddress
      * @return boolean
      */
-    public boolean equals(Address otherObject) {
-        if (otherObject == null)
-            return false;
+    public boolean equals(Address otherAddress) {
 
-        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+        if (otherAddress == null){
+            return false;
+        }
+
+        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
 
         else {
-            GeneralDeliveryAddress otherGeneralDeliveryAddress = (GeneralDeliveryAddress)otherObject;
-            return (validTo.equals(otherGeneralDeliveryAddress.validTo) && validFrom.equals(otherGeneralDeliveryAddress.validFrom) && countryCode == otherGeneralDeliveryAddress.countryCode && nationalDialingPrefix.equals(otherGeneralDeliveryAddress.nationalDialingPrefix) && areaCode == otherGeneralDeliveryAddress.areaCode && number == otherGeneralDeliveryAddress.number && extension == otherGeneralDeliveryAddress.extension && physicalType == otherGeneralDeliveryAddress.physicalType && addressLine.equals(otherGeneralDeliveryAddress.addressLine) && city.equals(otherGeneralDeliveryAddress.city) && regionOrState.equals(otherGeneralDeliveryAddress.regionOrState) && zipOrPostCode.equals(otherGeneralDeliveryAddress.zipOrPostCode));
+            GeneralDeliveryAddress otherGeneralDeliveryAddress = (GeneralDeliveryAddress)otherAddress;
+            return (validTo.equals(otherGeneralDeliveryAddress.validTo) && validFrom.equals(otherGeneralDeliveryAddress.validFrom) 
+            && addressLine.equals(otherGeneralDeliveryAddress.addressLine) && city.equals(otherGeneralDeliveryAddress.city) &&
+            regionOrState.equals(otherGeneralDeliveryAddress.regionOrState) && zipOrPostCode.equals(otherGeneralDeliveryAddress.zipOrPostCode) &&
+            telecomAddress.equals(otherGeneralDeliveryAddress.telecomAddress)); // check that telecomAddress comparison works
         }
     }
 }

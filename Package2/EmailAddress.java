@@ -7,47 +7,46 @@ public class EmailAddress extends Address {
     private String tld;
 
     public EmailAddress() {
-        // super(); //isn't this done automatically? for default constructor of super
-        userName = "";
-        domainName = "";
-        tld = "";
+        userName = "user-name";
+        domainName = "domain-name";
+        tld = "com";
     }
 
-    public EmailAddress(String validTo, String validFrom, String userName, String domainName, String tld) {
-        super(validTo, validFrom);
+    public EmailAddress(String validFrom, String validTo, String userName, String domainName, String tld) {
+        super(validFrom, validTo);
         this.userName = userName;
         this.domainName = domainName;
         this.tld = tld;
     }
 
     public EmailAddress(EmailAddress someEmail) {
-        this(someEmail.validTo, someEmail.validFrom, someEmail.userName, someEmail.domainName, someEmail.tld);
+        this(someEmail.validFrom, someEmail.validTo, someEmail.userName, someEmail.domainName, someEmail.tld);
     }
 
     
     /** 
-     * @param otherObject
      * @return String
      */
     public String toString() {  //fix to correct formatting later
-        return (userName + "@" + domainName + "." + tld);
+        return ("The EMAIL ADDRESS:\n" + userName + "@" + domainName + "." + tld + " is valid from " + validFrom + " to " + validTo);
     }
 
     
     /** 
-     * @param otherObject
+     * @param otherAddress
      * @return boolean
      */
-    public boolean equals(Address otherObject) { 
-        
-        if (otherObject == null)
+    public boolean equals(Address otherAddress) { 
+
+        if (otherAddress == null){
             return false;
-        
-        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+        }
+
+        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
         if (!thisClass.substring(6).equals(otherClass.substring(6)))
             return false;
         else {
-            EmailAddress otherEmailAddress = (EmailAddress)otherObject;
+            EmailAddress otherEmailAddress = (EmailAddress) otherAddress;
             return (validTo.equals(otherEmailAddress.validTo) && validFrom.equals(otherEmailAddress.validFrom) && userName.equals(otherEmailAddress.userName) && domainName.equals(otherEmailAddress.domainName) && tld.equals(otherEmailAddress.tld));
         }
     }

@@ -3,34 +3,29 @@ package Package3;
 import Locale.Locale;
 import Package1.Address;
 
-public class PostOfficeBoxAddress extends Address{
-    private String addressLine;
-    private String city;
-    private String regionOrState;
-    private String zipOrPostCode;
-    private Locale loc;
+public class PostOfficeBoxAddress extends GeographicAddress{
+
     private int boxLobbyDoorCode;
 
+    //Default Constructor
     public PostOfficeBoxAddress() {
-        // super();
-        addressLine = "";
-        city = "";
-        regionOrState = "";
-        zipOrPostCode = "";
+        addressLine = "address";
+        city = "city";
+        regionOrState = "region/state";
+        zipOrPostCode = "zip/postcode";
+        boxLobbyDoorCode = 000;
         loc = new Locale();
     }
     
-    public PostOfficeBoxAddress(String validTo, String validFrom, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc1) {
-        super(validTo, validFrom);
-        this.addressLine = addressLine;
-        this.city = city;
-        this.regionOrState = regionOrState;
-        this.zipOrPostCode = zipOrPostCode;
-        loc = new Locale(loc1);
+    //Parameterized Constructor
+    public PostOfficeBoxAddress(String validFrom, String validTo, String addressLine, String city, String regionOrState, String zipOrPostCode, Locale loc1, int boxLobbyDoorCode) {
+        super(validFrom, validTo, addressLine, city, regionOrState, zipOrPostCode, loc1); // incorrect way to implement? Address object will be built theoretically before this line no?
+        this.boxLobbyDoorCode = boxLobbyDoorCode;
     }
 
+    //Copy Constructor
     public PostOfficeBoxAddress(PostOfficeBoxAddress someBox) {
-        this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc);
+        this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc, someBox.boxLobbyDoorCode);
     }
 
     
@@ -38,7 +33,9 @@ public class PostOfficeBoxAddress extends Address{
      * @return String
      */
     public String toString() {
-        return ("This P.O. Box address is " + addressLine + ", " + city + ", " + regionOrState + ".\n" + zipOrPostCode + "\n" + loc + ".\nBox pin is " + boxLobbyDoorCode);
+        return ("This P.O. BOX ADDRESS:\n" + addressLine + ", " + city + ", " 
+        + regionOrState + ".\n" + zipOrPostCode + "\n" + loc 
+        + ".\nWith box pin: " + boxLobbyDoorCode + "\nis valid from " + validFrom + " to " + validTo);
     }
 
     
@@ -46,16 +43,18 @@ public class PostOfficeBoxAddress extends Address{
      * @param otherObject
      * @return boolean
      */
-    public boolean equals(Address otherObject) {
-        if (otherObject == null)
-            return false;
+    public boolean equals(Address otherAddress) {
 
-        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+        if (otherAddress == null){
+            return false;
+        }
+
+        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
-            PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherObject;
+            PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherAddress;
             return (validTo.equals(otherPostOfficeBoxAddress.validTo) && validFrom.equals(otherPostOfficeBoxAddress.validFrom) && addressLine.equals(otherPostOfficeBoxAddress.addressLine) && city.equals(otherPostOfficeBoxAddress.city) && city.equals(otherPostOfficeBoxAddress.city) && zipOrPostCode.equals(otherPostOfficeBoxAddress.zipOrPostCode) && loc.equals(otherPostOfficeBoxAddress.loc) && boxLobbyDoorCode == otherPostOfficeBoxAddress.boxLobbyDoorCode);
         }
     }

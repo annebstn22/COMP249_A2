@@ -1,21 +1,24 @@
 package Locale;
 public class Locale {
-    protected String alphaCountryCode;      //protected or private???
-    protected int numCountryCode;
-    protected String countryName;
+    private String alphaCountryCode;      //DOUBLE CHECK: protected or private attributes
+    private int numCountryCode;
+    private String countryName;
 
+    //Default Constructor
     public Locale() {
-        alphaCountryCode = "";
+        alphaCountryCode = "UN";
         numCountryCode = 000;
-        countryName = "";
+        countryName = "Unknown";
     }
 
+    //Parameterized Constructor
     public Locale(String alphaCountryCode, int numCountryCode, String countryName) {
-        this.alphaCountryCode = alphaCountryCode; // check that only 2 letters
-        this.numCountryCode = numCountryCode; // check that is 3 integers
+        this.alphaCountryCode = alphaCountryCode.substring(0, 2); 
+        this.numCountryCode = numCountryCode; // check that is 3 integers 
         this.countryName = countryName; 
     }
 
+    //Copy Constructor
     public Locale(Locale some_locale) {
         this(some_locale.alphaCountryCode, some_locale.numCountryCode, some_locale.countryName);
     }
@@ -30,19 +33,21 @@ public class Locale {
 
     
     /** 
-     * @param otherObject
+     * @param locale
      * @return boolean
      */
-    public boolean equals(Object otherObject) {
-        if (otherObject == null)
-            return false;
+    public boolean equals(Locale locale) {
 
-        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
+        if (locale == null){
+            return false;
+        }
+
+        String thisClass = getClass().toString(), otherClass = locale.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
-            Locale otherLocale = (Locale) otherObject;
+            Locale otherLocale = (Locale) locale;
             return (alphaCountryCode.equals(otherLocale.alphaCountryCode) && numCountryCode == otherLocale.numCountryCode && countryName.equals(otherLocale.countryName));
         }
     }

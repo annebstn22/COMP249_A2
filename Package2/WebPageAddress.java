@@ -1,3 +1,7 @@
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
 
 package Package2;
 import Package1.Address;
@@ -32,24 +36,20 @@ public class WebPageAddress extends Address{
     }
     
     
-    /** 
-     * @param otherObject
+    /** Converts object attributes to a printable String format
      * @return String
      */
     public String toString() {
         return ("The WEB PAGE ADDRESS:\nwww." + domainName + "/" + resourceName + " is valid from " + validFrom + " to " + validTo);
     }
-
     
-    /** 
-     * @param otherObject
+    /** Checks equality of objects
+     * @param otherObject of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {
-
-        if (otherAddress == null){
+        if (otherAddress == null)
             return false;
-        }
 
         String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 
@@ -65,7 +65,8 @@ public class WebPageAddress extends Address{
     public void domainNameMandatory(String domainName){
         if (domainName.isEmpty()){
             this.domainName = "unknown-domain-name";
-        } else {
+        } 
+        else {
             this.domainName = domainName;
         }
     }
@@ -87,7 +88,6 @@ public class WebPageAddress extends Address{
         return validFrom;
     }
 
-    //mutator methods
     public void setDomainName(String domainName){
         this.domainName = domainName;
     }

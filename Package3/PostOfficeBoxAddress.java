@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
+
 package Package3;
 
 import Locale.Locale;
@@ -27,9 +32,8 @@ public class PostOfficeBoxAddress extends GeographicAddress{
     public PostOfficeBoxAddress(PostOfficeBoxAddress someBox) {
         this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc, someBox.boxLobbyDoorCode);
     }
-
     
-    /** 
+    /** Converts object attributes to a printable String format
      * @return String
      */
     public String toString() {
@@ -39,15 +43,13 @@ public class PostOfficeBoxAddress extends GeographicAddress{
     }
 
     
-    /** 
-     * @param otherObject
+    /** Checks equality of objects
+     * @param otherObject of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {
-
-        if (otherAddress == null){
+        if (otherAddress == null)
             return false;
-        }
 
         String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 

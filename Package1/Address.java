@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
+
 package Package1;
 
 public class Address {
@@ -13,18 +18,15 @@ public class Address {
 
     //Parameterized Constructor
     public Address(String validFrom, String validTo) {
-
         // Assign earliest date to validFrom and furthese date to validTo
-
         if (checkValidDateOrder(validFrom, validTo)){
             this.validFrom = validFrom;
             this.validTo = validTo; 
-        } else {
+        } 
+        else {
             this.validFrom = validTo;
             this.validTo = validFrom; 
-        }
-        
-        
+        }      
     }
 
     //Copy Constructor
@@ -32,15 +34,15 @@ public class Address {
         this(someAddress.validFrom, someAddress.validTo);
     }
 
-    /** 
+    /** Converts object attributes to a printable String format
      * @return String
      */
     public String toString() {
         return ("This address is valid from " + validFrom + " to " + validTo);
     } 
     
-    /** 
-     * @param otherAddress
+    /** Checks equality of objects
+     * @param otherAddress of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {

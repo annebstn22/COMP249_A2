@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
+
 package Package3;
 
 import Package2.TelecomAddress;
@@ -83,7 +88,7 @@ public class GeneralDeliveryAddress extends Address{
         this.telecomAddress = copyOfTelecomAddress;
     }
 
-    /** 
+    /** Converts object attributes to a printable String format
      * @return String
      */
     public String toString() {  //finish later
@@ -92,15 +97,13 @@ public class GeneralDeliveryAddress extends Address{
         + validFrom + " to " + validTo;
     }
     
-    /** 
-     * @param otherAddress
+    /** Checks equality of objects
+     * @param otherAddress of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {
-
-        if (otherAddress == null){
+        if (otherAddress == null)
             return false;
-        }
 
         String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 

@@ -1,3 +1,7 @@
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
 
 package Package2;
 import Package1.Address;
@@ -37,26 +41,24 @@ public class TelecomAddress extends Address {
     }
 
     
-    /** 
+    /** Converts object attributes to a printable String format
      * @return String
      */
     public String toString(){ 
-        return ("The TELECOM ADDRESS:\n" + countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType + " is valid from " + validFrom + " to " + validTo);
+        return ("The TELECOM ADDRESS:\n" + "+" + countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType + " is valid from " + validFrom + " to " + validTo);
     }
 
     public String display(){
         return (countryCode + " " + nationalDialingPrefix + areaCode + " " + number + " ext. " + extension + " " + physicalType);
     }
     
-    /** 
-     * @param otherObject
+    /** Checks equality of objects
+     * @param otherObject of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {
-
-        if (otherAddress == null){
+        if (otherAddress == null)
             return false;
-        }
 
         String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 
@@ -66,5 +68,54 @@ public class TelecomAddress extends Address {
             TelecomAddress otherTelecomAddress = (TelecomAddress)otherAddress;
             return (validTo.equals(otherTelecomAddress.validTo) && validFrom.equals(otherTelecomAddress.validFrom) && countryCode == otherTelecomAddress.countryCode && nationalDialingPrefix.equals(otherTelecomAddress.nationalDialingPrefix) && areaCode == otherTelecomAddress.areaCode && number == otherTelecomAddress.number && extension == otherTelecomAddress.extension && physicalType.equals(otherTelecomAddress.physicalType));
         }
+    }
+
+    //Accessors and Mutators
+    public void setCountryCode(int countryCode){
+        this.countryCode =  countryCode;
+    }
+
+    public void setNationalDialingPrefix(String nationalDialingPrefix){
+        this.nationalDialingPrefix = nationalDialingPrefix;
+    }
+
+    public void setAreaCode(int areaCode){
+        this.areaCode = areaCode;
+    }
+   
+    public void setNumber(long number){
+        this.number = number;
+    }
+
+    public void setExtension(int extension){
+        this.extension =  extension;
+    }
+
+    public void setPhysicalType(String physicalType){
+        this.physicalType = physicalType;
+    }
+
+    public int getCountryCode(){
+        return countryCode;
+    }
+
+    public String getNationalDialingPrefix(){
+        return nationalDialingPrefix;
+    }
+
+    public int getAreaCode(){
+        return areaCode;
+    }
+   
+    public long getNumber(){
+        return number;
+    }
+
+    public int getExtension(){
+        return extension;
+    }
+
+    public String getPhysicalType(){
+        return physicalType;
     }
 }

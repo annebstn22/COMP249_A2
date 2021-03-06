@@ -1,11 +1,15 @@
-
+// -----------------------------------------------------------------------------
+// Part: 1
+// Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
+// -----------------------------------------------------------------------------
+ 
 package Package3;
 
 import Locale.Locale;
 import Package1.Address;
 
 public class GeographicAddress extends Address {
-    protected String addressLine; //DOUBLE CHECK: protected so that PostOfficeBoxAddress can have access
+    protected String addressLine;
     protected String city;
     protected String regionOrState;
     protected String zipOrPostCode;
@@ -36,8 +40,7 @@ public class GeographicAddress extends Address {
     }
 
     // Accessors and Mutators
-
-    public String getAddressLine(){
+    public String getAddressLine() {
         return addressLine;
     }
 
@@ -78,24 +81,20 @@ public class GeographicAddress extends Address {
         this.loc = newLoc;
     }
 
-
-    /**
+    /**Converts object attributes to a printable String format
      * @return String
      */
     public String toString() { 
-        return ("The GEOGRAPHIC ADDRESS:\n" + addressLine + ", " + city + ", " + regionOrState + zipOrPostCode + loc + " \nis valid from " + validFrom + " to " + validTo);
+        return ("The GEOGRAPHIC ADDRESS:\n" + addressLine + ", " + city + ", " + regionOrState + " " + zipOrPostCode + loc + " \nis valid from " + validFrom + " to " + validTo);
     }
     
-    
-    /** 
-     * @param otherAddress
+    /** Checks equality of objects
+     * @param otherAddress of type Address
      * @return boolean
      */
     public boolean equals(Address otherAddress) {
-
-        if (otherAddress == null){
+        if (otherAddress == null)
             return false;
-        }
 
         String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
 

@@ -51,7 +51,7 @@ public class driver {
         GeographicAddress geo2 = new GeographicAddress(geo1);
         GeographicAddress geo3 = new GeographicAddress();
 
-        PostOfficeBoxAddress postOff1 = new PostOfficeBoxAddress("1989-08-16", "1989-08-16", "23 BobRoss Rd", "Netflix City", "New York", "T75 7V4", loc1, 282);
+        PostOfficeBoxAddress postOff1 = new PostOfficeBoxAddress("1989-08-16", "1989-08-16", "23 BobRoss Rd", "Netflix City", "New York", "T75 7V4", loc2, 282);
         PostOfficeBoxAddress postOff2 = null;
         PostOfficeBoxAddress postOff3 = new PostOfficeBoxAddress();
 

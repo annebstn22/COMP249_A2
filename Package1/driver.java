@@ -105,7 +105,7 @@ public class driver {
         System.out.println("\n\nPrinting arr:");
 
         for (int i=0; i<arr.length; i++)
-            System.out.println(arr[i]);
+            System.out.println("\n"+arr[i]+"\n");
 
         System.out.println("\nPrinting arr_copy:");
         copyAddresses(arr);

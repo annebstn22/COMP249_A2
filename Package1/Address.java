@@ -87,7 +87,7 @@ public class Address {
     }
 
     //Check if validFrom <= ValidTo
-    public boolean checkValidDateOrder(String validFrom, String validTo){
+    private boolean checkValidDateOrder(String validFrom, String validTo){
         if (validFrom.compareTo(validTo)<=0){
             return true;
         } else {

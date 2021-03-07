@@ -32,7 +32,18 @@ public class PostOfficeBoxAddress extends GeographicAddress{
     public PostOfficeBoxAddress(PostOfficeBoxAddress someBox) {
         this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc, someBox.boxLobbyDoorCode);
     }
+
+    //Accessors and Mutators
+
     
+    public int getBoxLobbyDoorCode(){
+        return boxLobbyDoorCode;
+    }
+    
+    public void setBoxLobbyDoorCode(int boxLobbyDoorCode){
+        this.boxLobbyDoorCode = boxLobbyDoorCode;
+    }
+
     /** Converts object attributes to a printable String format
      * @return String
      */

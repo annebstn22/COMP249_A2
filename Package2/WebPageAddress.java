@@ -3,6 +3,15 @@
 // Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
 // -----------------------------------------------------------------------------
 
+/**
+ * This class implements the constructors, setters/getters, methods for the WebPageAddress class which is a child of the Address class.
+ * @author Anne Bastien, 40133471 and Alexandra Spyridakos, 40175280
+ * @version 1.0
+ * COMP249
+ * Assignment 2
+ * March 8th, 2021
+ */
+
 package Package2;
 import Package1.Address;
 
@@ -10,27 +19,39 @@ public class WebPageAddress extends Address{
     private String domainName;
     private String resourceName;
 
-    //Default Constructor
+    /**Default Constructor*/
     public WebPageAddress(){
         domainName = "domain-name";
         resourceName = "";
     }
 
-    // They wanted parameterized constructors to have a parameterized constructor - to change or remove?
+    /**
+     * Parametrized Constructor (without date)
+     * @param domainName String
+     * @param resourceName String
+     */
     public WebPageAddress(String domainName, String resourceName){
-        //super();
         domainNameMandatory(domainName);
         this.resourceName = resourceName; 
     }    
 
-    //Parameterized Constructor
+    /**
+     * Parameterized Constructor
+     * @param validFrom String
+     * @param validTo String
+     * @param domainName String
+     * @param resourceName String
+     */
     public WebPageAddress(String validFrom, String validTo, String domainName, String resourceName){
         super(validFrom, validTo);
         domainNameMandatory(domainName);
         this.resourceName = resourceName;
     }  
 
-    //Copy Constructor
+    /**
+     * Copy Constructor
+     * @param otherWebPageAddress WebPageAddress
+     */
     public WebPageAddress(WebPageAddress otherWebPageAddress){
         this(otherWebPageAddress.validFrom, otherWebPageAddress.validTo, otherWebPageAddress.domainName, otherWebPageAddress.resourceName);
     }
@@ -62,6 +83,10 @@ public class WebPageAddress extends Address{
         }
     }
 
+    /**
+     * Verifies if domainName exists
+     * @param domainName String
+     */
     public void domainNameMandatory(String domainName){
         if (domainName.isEmpty()){
             this.domainName = "unknown-domain-name";
@@ -72,34 +97,67 @@ public class WebPageAddress extends Address{
     }
 
     //Accessors and Mutators
+
+    /**
+     * Getter for domainName
+     * @return domainName
+     */
     public String getDomainName(){
         return domainName;
     }
 
+    /**
+     * Getter for resourceName
+     * @return resourceName
+     */
     public String getResourceName(){
         return resourceName;
     }
 
+    /**
+     * Getter for validTo
+     * @return validTo
+     */
     public String getValidTo() {
         return validTo;
     }
 
+    /**
+     * Getter for validFrom
+     * @return validFrom
+     */
     public String getValidFrom() {
         return validFrom;
     }
 
+    /**
+     * Sets domainName to a new value
+     * @param domainName String
+     */
     public void setDomainName(String domainName){
         this.domainName = domainName;
     }
 
+    /**
+     * Sets resourceName to a new value
+     * @param resourceName String
+     */
     public void setResourceName(String resourceName){
         this.resourceName = resourceName;
     }
 
+    /**
+     * Sets validTo to a new value
+     * @param validTo String
+     */
     public void setValidTo(String validTo) {
         this.validTo = validTo;
     }
 
+    /**
+     * Sets validFrom to a new value
+     * @param validFrom String
+     */
     public void setValidFrom(String validFrom) {
         this.validFrom = validFrom;
     }

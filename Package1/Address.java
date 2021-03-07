@@ -9,14 +9,17 @@ public class Address {
     protected String validFrom;
     protected String validTo;
 
-    //Default Constructor
+    /**Default Constructor*/
     public Address() {
         validFrom = "0000-00-00"; 
         validTo = "0000-00-00"; 
-        
     }
 
-    //Parameterized Constructor
+    /**
+     * Parameterized Constructor
+     * @param validFrom String
+     * @param validTo String
+     */
     public Address(String validFrom, String validTo) {
         // Assign earliest date to validFrom and furthese date to validTo
         if (checkValidDateOrder(validFrom, validTo)){
@@ -29,7 +32,10 @@ public class Address {
         }      
     }
 
-    //Copy Constructor
+    /**
+     * Copy Constructor
+     * @param someAddress Address
+     */
     public Address(Address someAddress) {
         this(someAddress.validFrom, someAddress.validTo);
     }
@@ -63,30 +69,42 @@ public class Address {
 
     //Accessors and Mutators
 
-    /** 
+    /** Getter for validFrom
      * @return String validFrom
      */
-
     public String getValidFrom(){
         return validFrom;
     }
 
+    /**
+     * Sets validFrom to a new value
+     * @param validFrom String
+     */
     public void setValidFrom(String validFrom){
         this.validFrom = validFrom;
     }
     
-    /** 
+    /** Getter for validTo
      * @return String validTo
      */
     public String getValidTo(){
         return validTo;
     }
 
+    /**
+     * Sets validTo to a new value
+     * @param validTo String
+     */
     public void setValidTo(String validTo){
         this.validTo = validTo;
     }
 
-    //Check if validFrom <= ValidTo
+    /**
+     * Check if validFrom <= ValidTo
+     * @param validFrom String
+     * @param validTo String
+     * @return boolean
+     */
     public boolean checkValidDateOrder(String validFrom, String validTo){
         if (validFrom.compareTo(validTo)<=0){
             return true;

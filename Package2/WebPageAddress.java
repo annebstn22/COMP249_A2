@@ -16,7 +16,7 @@ public class WebPageAddress extends Address{
         resourceName = "";
     }
 
-    // They wanted parameterized constructors to have a parameterized constructor - to change or remove?
+    //TO REMOVE? They wanted parameterized constructors to have a parameterized constructor - to change or remove?
     public WebPageAddress(String domainName, String resourceName){
         //super();
         domainNameMandatory(domainName);
@@ -62,7 +62,7 @@ public class WebPageAddress extends Address{
         }
     }
 
-    public void domainNameMandatory(String domainName){
+    private void domainNameMandatory(String domainName){
         if (domainName.isEmpty()){
             this.domainName = "unknown-domain-name";
         } 
@@ -80,27 +80,11 @@ public class WebPageAddress extends Address{
         return resourceName;
     }
 
-    public String getValidTo() {
-        return validTo;
-    }
-
-    public String getValidFrom() {
-        return validFrom;
-    }
-
     public void setDomainName(String domainName){
         this.domainName = domainName;
     }
 
     public void setResourceName(String resourceName){
         this.resourceName = resourceName;
-    }
-
-    public void setValidTo(String validTo) {
-        this.validTo = validTo;
-    }
-
-    public void setValidFrom(String validFrom) {
-        this.validFrom = validFrom;
     }
 }

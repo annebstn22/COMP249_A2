@@ -82,16 +82,16 @@ public class TelecomAddress extends Address {
      * @param otherObject of type Address
      * @return boolean
      */
-    public boolean equals(Address otherAddress) {
-        if (otherAddress == null)
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
             return false;
 
-        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
-            TelecomAddress otherTelecomAddress = (TelecomAddress)otherAddress;
+            TelecomAddress otherTelecomAddress = (TelecomAddress)otherObject;
             return (validTo.equals(otherTelecomAddress.validTo) && validFrom.equals(otherTelecomAddress.validFrom) && countryCode == otherTelecomAddress.countryCode && nationalDialingPrefix.equals(otherTelecomAddress.nationalDialingPrefix) && areaCode == otherTelecomAddress.areaCode && number == otherTelecomAddress.number && extension == otherTelecomAddress.extension && physicalType.equals(otherTelecomAddress.physicalType));
         }
     }

@@ -160,20 +160,20 @@ public class GeneralDeliveryAddress extends Address{
     }
     
     /** Checks equality of objects
-     * @param otherAddress of type Address
+     * @param otherObject of type Address
      * @return boolean
      */
-    public boolean equals(Address otherAddress) {
-        if (otherAddress == null)
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
             return false;
 
-        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
 
         else {
-            GeneralDeliveryAddress otherGeneralDeliveryAddress = (GeneralDeliveryAddress)otherAddress;
+            GeneralDeliveryAddress otherGeneralDeliveryAddress = (GeneralDeliveryAddress)otherObject;
             return (validTo.equals(otherGeneralDeliveryAddress.validTo) && validFrom.equals(otherGeneralDeliveryAddress.validFrom) 
             && addressLine.equals(otherGeneralDeliveryAddress.addressLine) && city.equals(otherGeneralDeliveryAddress.city) &&
             regionOrState.equals(otherGeneralDeliveryAddress.regionOrState) && zipOrPostCode.equals(otherGeneralDeliveryAddress.zipOrPostCode) &&

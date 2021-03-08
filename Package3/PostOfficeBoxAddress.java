@@ -13,8 +13,6 @@
  */
 
 package Package3;
-
-import Locale.Locale;
 import Package1.Address;
 
 public class PostOfficeBoxAddress extends GeographicAddress{
@@ -55,16 +53,6 @@ public class PostOfficeBoxAddress extends GeographicAddress{
         this(someBox.validTo, someBox.validFrom, someBox.addressLine, someBox.city, someBox.regionOrState, someBox.zipOrPostCode, someBox.loc, someBox.boxLobbyDoorCode);
     }
 
-    //Accessors and Mutators
-
-    
-    public int getBoxLobbyDoorCode(){
-        return boxLobbyDoorCode;
-    }
-    
-    public void setBoxLobbyDoorCode(int boxLobbyDoorCode){
-        this.boxLobbyDoorCode = boxLobbyDoorCode;
-    }
 
     /** Converts object attributes to a printable String format
      * @return String
@@ -80,16 +68,16 @@ public class PostOfficeBoxAddress extends GeographicAddress{
      * @param otherObject of type Address
      * @return boolean
      */
-    public boolean equals(Address otherAddress) {
-        if (otherAddress == null)
+    public boolean equals(Object otherObject) {
+        if (otherObject == null)
             return false;
 
-        String thisClass = getClass().toString(), otherClass = otherAddress.getClass().toString(); 
+        String thisClass = getClass().toString(), otherClass = otherObject.getClass().toString(); 
 
         if (!thisClass.substring(6).equals(otherClass.substring(6))) 
             return false;
         else {
-            PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherAddress;
+            PostOfficeBoxAddress otherPostOfficeBoxAddress = (PostOfficeBoxAddress)otherObject;
             return (validTo.equals(otherPostOfficeBoxAddress.validTo) && validFrom.equals(otherPostOfficeBoxAddress.validFrom) && addressLine.equals(otherPostOfficeBoxAddress.addressLine) && city.equals(otherPostOfficeBoxAddress.city) && city.equals(otherPostOfficeBoxAddress.city) && zipOrPostCode.equals(otherPostOfficeBoxAddress.zipOrPostCode) && loc.equals(otherPostOfficeBoxAddress.loc) && boxLobbyDoorCode == otherPostOfficeBoxAddress.boxLobbyDoorCode);
         }
     }
@@ -106,7 +94,7 @@ public class PostOfficeBoxAddress extends GeographicAddress{
      * Getter for boxLobbyDoorCode
      * @return int boxLobbyDoorCode
      */
-    public int setBoxLobbyDoorCode() {
+    public int getBoxLobbyDoorCode() {
         return boxLobbyDoorCode;
     }
 }

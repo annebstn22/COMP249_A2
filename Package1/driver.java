@@ -3,6 +3,14 @@
 // Written by: Anne Bastien 40133471 and Alexandra Spyridakos 40175280
 // -----------------------------------------------------------------------------
 
+/**
+ * This class implements the driver class and the methods traceObsoleteAddress and copyAddresses it will use.
+ * @author Anne Bastien, 40133471 and Alexandra Spyridakos, 40175280
+ * @version 1.0 & 2.0
+ * COMP249
+ * Assignment 2
+ * March 8th, 2021
+ */
 
 package Package1;
 import Package2.*;

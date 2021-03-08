@@ -67,19 +67,22 @@ public class driver {
         GeneralDeliveryAddress genD1 = new GeneralDeliveryAddress("2004-10-21", "2100-03-03", "145 Wolfe Crescent", "PineCity", "Colorado", "M8Y 3R5", telec1);
         GeneralDeliveryAddress genD2 = new GeneralDeliveryAddress(genD1);
 
-        GeographicAddress genD3 = new PostOfficeBoxAddress("1989-08-16", "1989-08-16", "23 BobRoss Rd", "Netflix City", "New York", "T75 7V4", loc1, 282);
+        GeographicAddress geoA1 = new PostOfficeBoxAddress("1989-08-16", "1989-08-16", "23 BobRoss Rd", "Netflix City", "New York", "T75 7V4", loc1, 282);
 
         Address a2 = new Address();
         Address a3 = new Address("2001-05-14", "2088-12-06");
 
+
+        System.out.println("Testing equality of objects...");
+
         //TESTING .equals() METHOD
-        if (postOff1.equals(genD2)){
+        if (postOff1.equals(geoA1)){
             System.out.println("\n====They are equal====\n");
         } else {
             System.out.println("\n====They are NOT equal====\n");
         }
 
-        if (genD2.equals(postOff1)){
+        if (geoA1.equals(postOff1)){
             System.out.println("\n====They are equal====\n");
         } else {
             System.out.println("\n====They are NOT equal====\n");
@@ -99,7 +102,7 @@ public class driver {
         }
         
         //initializing array of Address objects
-        Address[] arr = {web1, em1, telec1, geo1, postOff1, genD1, web2, genD2, a1, telec2, a2, telec3, geo2, a3, geo3, em2, genD3, postOff3};
+        Address[] arr = {web1, em1, telec1, geo1, postOff1, genD1, web2, genD2, a1, telec2, a2, telec3, geo2, a3, geo3, em2, geoA1, postOff3};
 
         System.out.println("\n\n\n========Checking for Obsolete Addresses========\n\n");
         traceObsoleteAddress(arr, 2004, 1, 21);

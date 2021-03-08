@@ -12,11 +12,11 @@
  * March 8th, 2021
  */
 
-package Locale;
+package Package3;
 public class Locale {
-    private String alphaCountryCode;   
-    private int numCountryCode;
-    private String countryName;
+    String alphaCountryCode;   
+    int numCountryCode;
+    String countryName;
 
     /**
      * Default Constructor 

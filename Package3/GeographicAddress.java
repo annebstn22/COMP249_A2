@@ -97,7 +97,8 @@ public class GeographicAddress extends Address {
      * @return Locale loc 
      */
     public Locale getLocale(){
-        return loc;
+        Locale copyLoc = new Locale(this.loc);
+        return copyLoc;
     }
 
     /**

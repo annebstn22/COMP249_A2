@@ -106,7 +106,8 @@ public class GeneralDeliveryAddress extends Address{
      * @return telecomAddress
      */
     public TelecomAddress getTelecomAddress(){
-        return telecomAddress;
+        TelecomAddress copyTelecomAddress = new TelecomAddress(telecomAddress);
+        return copyTelecomAddress;
     }
 
     /**
@@ -146,7 +147,7 @@ public class GeneralDeliveryAddress extends Address{
      * @param telecomAddress TelecomAddress
      */
     public void setTelecomAddress(TelecomAddress telecomAddress){
-        TelecomAddress copyOfTelecomAddress = new TelecomAddress(telecomAddress);
+        TelecomAddress copyOfTelecomAddress = new TelecomAddress(this.telecomAddress);
         this.telecomAddress = copyOfTelecomAddress;
     }
 
